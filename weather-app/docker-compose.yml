@@ -27,10 +27,11 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/weatherdb
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=password
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=weatherdb
+      - DB_USER=postgres
+      - DB_PASSWORD=password
 
 volumes:
   postgres-data:
