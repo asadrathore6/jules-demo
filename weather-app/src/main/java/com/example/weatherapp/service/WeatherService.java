@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -26,6 +27,10 @@ public class WeatherService {
     }
 
     // Schedule to run every minute for demonstration.
+    public List<WeatherData> getAllWeatherData() {
+        return weatherDataRepository.findAll();
+    }
+
     @Scheduled(fixedRate = 60000)
     public void fetchAndSaveWeatherData() {
         log.info("Scheduler running: Fetching weather data...");

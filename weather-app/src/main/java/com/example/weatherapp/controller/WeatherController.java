@@ -1,7 +1,7 @@
 package com.example.weatherapp.controller;
 
 import com.example.weatherapp.entity.WeatherData;
-import com.example.weatherapp.repository.WeatherDataRepository;
+import com.example.weatherapp.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +13,15 @@ import java.util.List;
 @RequestMapping("/api")
 public class WeatherController {
 
-    private final WeatherDataRepository weatherDataRepository;
+    private final WeatherService weatherService;
 
     @Autowired
-    public WeatherController(WeatherDataRepository weatherDataRepository) {
-        this.weatherDataRepository = weatherDataRepository;
+    public WeatherController(WeatherService weatherService) {
+        this.weatherService = weatherService;
     }
 
     @GetMapping("/weather")
     public List<WeatherData> getAllWeatherData() {
-        return weatherDataRepository.findAll();
+        return weatherService.getAllWeatherData();
     }
 }
